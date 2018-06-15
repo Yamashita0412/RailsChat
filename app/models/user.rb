@@ -1,4 +1,12 @@
 class User < ApplicationRecord
+
+  has_many :from_messages, class_name: "Message",
+           foreign_key: "from_id", dependent: :destroy
+  has_many :to_messages, class_name: "Message",
+           foreign_key: "to_id", dependent: :destroy
+  has_many :sent_messages, through: :from_messages, source: :from
+  has_many :received_messages, through: :to_messages, source: :to
+
   attr_accessor :remember_token
   before_save { self.email = email.downcase }
   validates :name,  presence: true, length: { maximum: 50 }
@@ -36,5 +44,10 @@ class User < ApplicationRecord
   # ユーザーのログイン情報を破棄する
   def forget
     update_attribute(:remember_digest, nil)
+  end
+
+  # 他のユーザーにメッセージ送信する
+  def send_message(other_user, room_id, content)
+    from_messages.create!(to_id: other_user.id, room_id: room_id, content: content)
   end
 end
