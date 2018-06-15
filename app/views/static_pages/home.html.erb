@@ -1,13 +1,11 @@
 <% if logged_in? %>
-
   <div class="center jumbotron">
-  <h1>After login output</h1>
+    <h1>Let's enjoy your chat time!</h1>
+    <%= link_to "Search for your friend now!", users_path, class: "btn btn-lg btn-primary" %>
+  </div>
 <% else %>
   <div class="center jumbotron">
     <h1>Welcome to the Rails Chat</h1>
-
-
     <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
   </div>
-  <%= link_to image_tag("rails.png", alt: "Rails logo"), 'http://rubyonrails.org/' %>
 <% end %>

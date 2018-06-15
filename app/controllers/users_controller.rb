@@ -3,13 +3,13 @@ class UsersController < ApplicationController
   before_action :correct_user,   only: [:edit, :update]
   before_action :admin_user,     only: :destroy
 
+
   def index
     @users = User.paginate(page:params[:page])
   end
 
   def show
     @user = User.find(params[:id])
-
     @room_id = message_room_id(current_user, @user)
     @messages = Message.recent_in_room(@room_id)
 
