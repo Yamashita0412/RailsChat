@@ -15,9 +15,9 @@ room_id = ->
 room_ch = ->
   id = room_id()
   if id?
-    return {channel: 'ChatChannel', room_id: id}
+    {channel: 'ChatChannel', room_id: id}
   else
-    return null
+    null
 
 # リンクのクリックによりAjaxリクエストが呼ばれたら購読を解除
 document.addEventListener 'turbolinks:request-start', ->

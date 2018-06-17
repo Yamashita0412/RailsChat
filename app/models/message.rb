@@ -12,7 +12,7 @@ class Message < ApplicationRecord
   validates :room_id, presence: true
   validates :content, presence: true, length: {maximum: 50}
 
-  # Methods
+  # 直近500件のトークを返す
   def Message.recent_in_room(room_id)
     where(room_id: room_id).last(500)
   end
