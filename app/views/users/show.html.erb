@@ -12,19 +12,9 @@
 
   <div class="col-md-8">
     <% if !current_user?(@user) && logged_in? %>
-      <h3>Friends Chat Room</h3>
-      <section class="message_box">
-        <div id="messages">
-          <%= render @messages %>
-        </div>
+      <section class="user_chat">
+        <%= render 'messages/message_chat' %>
       </section>
-      <script type="text/javascript">
-          $("section.message_box").scrollTop($("section.message_box")[0].scrollHeight);
-      </script>
-      <div class="message_form">
-        <%= render 'messages/message_form',
-                   {from_user: current_user, to_user: @user, room_id: @room_id} %>
-      </div>
     <% end %>
   </div>
 </div>
