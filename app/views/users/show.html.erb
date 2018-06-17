@@ -19,11 +19,7 @@
         </div>
       </section>
       <script type="text/javascript">
-        var height = 0;
-        $("div.message").each( function() {
-          height += ($(this).height());
-        });
-        $('section.message_box').scrollTop(height);
+          $("section.message_box").scrollTop($("section.message_box")[0].scrollHeight);
       </script>
       <div class="message_form">
         <%= render 'messages/message_form',

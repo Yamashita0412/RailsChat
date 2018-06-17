@@ -19,13 +19,6 @@ room_ch = ->
   else
     return null
 
-# 出力先の特定
-messages_height = ->
-  temp = 0;
-  $("div.message").each ->
-    temp += ($(this).height());
-  return temp
-
 # リンクのクリックによりAjaxリクエストが呼ばれたら購読を解除
 document.addEventListener 'turbolinks:request-start', ->
   if room_ch()?
@@ -38,8 +31,7 @@ document.addEventListener 'turbolinks:load', ->
       # 受診時の処理
       received: (data) ->
         $('#messages').append data['message']
-        $('section.message_box').scrollTop(messages_height());
-
+        $("section.message_box").scrollTop($("section.message_box")[0].scrollHeight);
       # 送信時の処理
       speak: (from_id, to_id, room_id, content) ->
         #メソッド呼び出し
