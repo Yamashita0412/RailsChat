@@ -13,6 +13,8 @@ gem 'faker',          '1.7.3'
 gem 'will_paginate',           '3.1.6'
 gem 'bootstrap-will_paginate', '1.0.0'
 
+gem 'ransack'
+
 # Use sqlite3 as the database for Active Record
 
 
