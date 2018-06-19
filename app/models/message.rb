@@ -1,5 +1,4 @@
 class Message < ApplicationRecord
-
   belongs_to :from, class_name: "User"
   belongs_to :to, class_name: "User"
 
@@ -19,6 +18,5 @@ class Message < ApplicationRecord
 
   # Callbacks
   after_create_commit { MessageBroadcastJob.perform_later self }
-
 
 end
